@@ -1,5 +1,10 @@
 :root {
     --bg-color: #D6D3D1;
+    --header-color: #EAB308;
+    --contrast-blue: navy;
+    --ligh-gray: #E7E5E4;
+
+    --border-radius: 0.2rem;
 }
 
 * {
@@ -9,4 +14,51 @@
 body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: var(--bg-color);
+    width: 100vw;
+    margin: 0;
+}
+
+header {
+    display: grid;
+    align-items: center;
+    width: 100%;
+    height: min(20vh, 160px);
+    background-color: var(--header-color);
+}
+
+#icon {
+    height: min(48px, 5vh);
+    justify-self: center;
+}
+
+form {
+    display: flex;
+    justify-self: center;
+    align-self: flex-start;
+    width: min(360px, 80%);
+}
+
+label {
+    display: none;
+}
+
+input {
+    outline: none;
+    border: 2px solid var(--ligh-gray);
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    padding: 0.2rem 0.5rem;
+    width: 100%;
+}
+
+input:focus {
+    border: 2px solid var(--contrast-blue);
+}
+
+button {
+    background-color: var(--contrast-blue);
+    color: white;
+    outline: none;
+    border: 2px solid var(--contrast-blue);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    padding: 0.5rem;
 }

@@ -1,4 +1,11 @@
 import './style.css';
+import iconSrc from './logo_white_cropped.png';
+
+const icon = new Image();
+icon.src = iconSrc;
+icon.setAttribute('id', 'icon');
+const header = document.querySelector('header');
+header.prepend(icon);
 
 const weatherApi = (function() {
     const apiKey = 'a6fb94b0479663119d883f5691dcff36';
