@@ -1,0 +1,12 @@
+:root {
+    --bg-color: #D6D3D1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: var(--bg-color);
+}
