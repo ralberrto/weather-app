@@ -4,7 +4,9 @@
   "description": "Provides a UI to make requests to the OpenWeather API based on the provided location. The site uses webpack.js as build system. And vanilla css and javascript for the frontend.",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
