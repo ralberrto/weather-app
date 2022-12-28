@@ -7,6 +7,18 @@ icon.setAttribute('id', 'icon');
 const header = document.querySelector('header');
 header.prepend(icon);
 
+const onSubmit = function(event) {
+    event.preventDefault();
+    const search = searchInput.value;
+    searchInput.value = '';
+    weatherApi.queryCityName(search).then((data) => console.log(data));
+};
+
+const searchForm = document.querySelector('form#search');
+searchForm.addEventListener('submit', onSubmit);
+const searchInput = document.getElementById('search-box');
+
+
 const weatherApi = (function() {
     const apiKey = 'a6fb94b0479663119d883f5691dcff36';
 
@@ -42,4 +54,4 @@ const weatherApi = (function() {
 
 })();
 
-const data = weatherApi.queryCityName().then((data) => console.log(data));
+//const data = weatherApi.queryCityName().then((data) => console.log(data));
