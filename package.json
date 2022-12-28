@@ -1,0 +1,26 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "Provides a UI to make requests to the OpenWeather API based on the provided location. The site uses webpack.js as build system. And vanilla css and javascript for the frontend.",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ralberrto/weather-app.git"
+  },
+  "author": "Alberto Larios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ralberrto/weather-app/issues"
+  },
+  "homepage": "https://github.com/ralberrto/weather-app#readme",
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
