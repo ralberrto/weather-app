@@ -57,25 +57,21 @@ const DomGenerator = (function() {
 
         const entryCity = document.createElement('p');
         entryCity.className = 'entry-city';
-        entryCity.textContent = city;
-
-        const entryCountry = document.createElement('p');
-        entryCountry.className = 'entry-country';
-        entryCountry.textContent = country;
+        entryCity.innerHTML = `<strong>${city}</strong>, ${country}`;
 
         const entryCoord = document.createElement('ul');
         entryCoord.className = 'entry-coordinates';
 
         const latitude = document.createElement('li');
         latitude.className = 'entry-latitude';
-        latitude.textContent = lat;
+        latitude.innerHTML = `<strong>Latitude</strong>: ${lat}`;
 
         const longitude = document.createElement('li');
-        longitude .className = 'entry-longitude';
-        longitude .textContent = lon;
+        longitude.className = 'entry-longitude';
+        longitude.innerHTML = `<strong>Longitude</strong>: ${lon}`;
 
         _appendChildren(entryCoord, latitude, longitude);
-        _appendChildren(entryCont, entryCity, entryCountry, entryCoord);
+        _appendChildren(entryCont, entryCity, entryCoord);
 
         return entryCont;
     };

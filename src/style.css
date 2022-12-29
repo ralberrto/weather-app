@@ -1,8 +1,10 @@
 :root {
-    --bg-color: #D6D3D1;
-    --header-color: #EAB308;
-    --contrast-blue: navy;
-    --ligh-gray: #E7E5E4;
+    --bg-color: #94A3B8;
+    --header-color: navy;
+    --contrast-color: #EAB308;
+    --light-gray: #E7E5E4;
+    --light-cold-gray: #CBD5E1;
+    --lighter-cold-gray: #E2E8F0;
 
     --border-radius: 0.2rem;
 }
@@ -44,21 +46,66 @@ label {
 
 input {
     outline: none;
-    border: 2px solid var(--ligh-gray);
+    border: 2px solid var(--light-gray);
     border-radius: var(--border-radius) 0 0 var(--border-radius);
     padding: 0.2rem 0.5rem;
     width: 100%;
 }
 
 input:focus {
-    border: 2px solid var(--contrast-blue);
+    border: 2px solid var(--contrast-color);
 }
 
 button {
-    background-color: var(--contrast-blue);
+    background-color: var(--contrast-color);
     color: white;
     outline: none;
-    border: 2px solid var(--contrast-blue);
+    border: 2px solid var(--contrast-color);
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
     padding: 0.5rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+#main-container {
+    margin: 2rem;
+}
+
+.search-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+}
+
+.search-entry:nth-child(odd) {
+    background-color: var(--light-cold-gray);
+}
+
+.search-entry:nth-child(even) {
+    background-color: var(--lighter-cold-gray);
+}
+
+.search-entry:first-child {
+    border-radius: 0.7rem 0.7rem 0 0;
+}
+
+.search-entry:last-child {
+    border-radius: 0 0 0.7rem 0.7rem;
+}
+
+.entry-city {
+    font-size: 1.1rem;
+}
+
+.entry-coordinates {
+    display: flex;
+}
+
+.entry-coordinates li {
+    margin-left: 1rem;
+    font-size: 0.8rem;
 }
