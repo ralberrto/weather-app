@@ -19,7 +19,11 @@ const onSubmit = function(event) {
             mainCont.appendChild(domList);
         } else if (entryList.length == 1) {
             weatherApi.queryWeather(entryList[0].lat, entryList[0].lon, 'current')
-                .then((response) => console.log(response));
+                .then((response) => {
+                const currentWeather = DomGenerator.displayCurrentWeather(response);
+                console.log(response);
+                mainCont.appendChild(currentWeather);
+                });
         }
     });
 };
@@ -35,6 +39,31 @@ const DomGenerator = (function() {
         for (let element of elements) {
             target.appendChild(element);
         }
+    };
+
+    const displayCurrentWeather = function(weatherObject) {
+        const container = document.createElement('div');
+
+        const header = document.createElement('h2');
+        header.className = 'current-city';
+        const cityName = weatherObject.name.replace(/\d+/g, '');
+        header.innerHTML = `<strong>${cityName}</strong>, ${weatherObject.sys.country}`;
+
+        const coordinates = document.createElement('ul');
+        coordinates.className = 'current-coordinates';
+        
+        const lat = document.createElement('li');
+        lat.className = 'current-lat';
+        lat.innerHTML = `<strong>Latitude</strong>: ${weatherObject.coord.lat}`
+
+        const lon = document.createElement('li');
+        lon.className = 'current-lon';
+        lon.innerHTML = `<strong>Longitude</strong>: ${weatherObject.coord.lon}`
+
+        _appendChildren(coordinates, lat, lon);
+        _appendChildren(container, header, coordinates);
+        
+        return container;
     };
 
     const createEntryList = function(entryList) {
@@ -78,6 +107,7 @@ const DomGenerator = (function() {
 
     return {
         createEntryList,
+        displayCurrentWeather
     }
 })();
 
