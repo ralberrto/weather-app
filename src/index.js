@@ -1,5 +1,6 @@
 import './style.css';
 import iconSrc from './logo_white_cropped.png';
+import _ from 'lodash';
 
 const icon = new Image();
 icon.src = iconSrc;
@@ -41,6 +42,15 @@ const DomGenerator = (function() {
         }
     };
 
+    const _K2Celsius = function(temp) {
+        return Math.round(temp - 273.15);
+    };
+
+    const timeshift2UtcStr = function(timeshift) {
+        const sign = timeshift < 0 ? '-' : '+';
+        return sign + ('00' + Math.round(Math.abs(timeshift)/3600)).slice(-2) + '00';
+    }
+
     const displayCurrentWeather = function(weatherObject) {
         const container = document.createElement('div');
 
@@ -48,6 +58,18 @@ const DomGenerator = (function() {
         header.className = 'current-city';
         const cityName = weatherObject.name.replace(/\d+/g, '');
         header.innerHTML = `<strong>${cityName}</strong>, ${weatherObject.sys.country}`;
+
+        const weather = document.createElement('ul');
+        weather.className = 'current-weather';
+
+        const description = document.createElement('li');
+        description.className = 'current-description';
+        description.textContent = _.startCase(weatherObject.weather[0].description);
+
+        const weatherIcon = new Image();
+        weatherIcon.src = `http://openweathermap.org/img/wn/${weatherObject.weather[0].icon}@2x.png`;
+
+        _appendChildren(weather, description, weatherIcon);
 
         const coordinates = document.createElement('ul');
         coordinates.className = 'current-coordinates';
@@ -60,8 +82,21 @@ const DomGenerator = (function() {
         lon.className = 'current-lon';
         lon.innerHTML = `<strong>Longitude</strong>: ${weatherObject.coord.lon}`
 
+        const temperature = document.createElement('p');
+        temperature.className = 'current-temp'
+        temperature.textContent = `${Math.round(weatherObject.main.temp - 273.15)} °C`;
+
+        const tempDetail = document.createElement('p');
+        tempDetail.className = 'current-temp-detail';
+        tempDetail.innerHTML = `Feels like: <strong>${_K2Celsius(weatherObject.main.feels_like)}°C</strong>; High: <strong>${_K2Celsius(weatherObject.main.temp_max)}°C</strong>; Low: <strong>${_K2Celsius(weatherObject.main.temp_min)}°C</strong>`;
+
+        const clock = document.createElement('div')
+        clock.className = 'current-clock';
+        clock.textContent = `UTC: ${timeshift2UtcStr(weatherObject.timezone)}`;
+        
+
         _appendChildren(coordinates, lat, lon);
-        _appendChildren(container, header, coordinates);
+        _appendChildren(container, header, coordinates, weather, temperature, tempDetail, clock);
         
         return container;
     };

@@ -70,8 +70,15 @@ ul {
     padding: 0;
 }
 
+h1 {
+    font-size: 1.2rem;
+}
+
 #main-container {
-    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 2rem;
 }
 
 .search-entry {
@@ -108,4 +115,47 @@ ul {
 .entry-coordinates li {
     margin-left: 1rem;
     font-size: 0.8rem;
+}
+
+.current-city {
+    font-size: 2rem;
+    text-align: center;
+    background-color: var(--light-cold-gray);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.current-coordinates {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.current-coordinates li {
+    font-size: 0.8rem;
+}
+
+.current-temp {
+    font-size: 3rem;
+    text-align: center;
+    margin: 0;
+}
+
+.current-temp-detail {
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.current-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.current-clock {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-color);
+    margin: 3rem 0;
+    text-align: center;
 }
