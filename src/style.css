@@ -24,7 +24,7 @@ header {
     display: grid;
     align-items: center;
     width: 100%;
-    height: min(20vh, 160px);
+    height: min(20vh, 200px);
     background-color: var(--header-color);
 }
 
@@ -58,7 +58,7 @@ input:focus {
 
 button {
     background-color: var(--contrast-color);
-    color: white;
+    color: var(--header-color);
     outline: none;
     border: 2px solid var(--contrast-color);
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
@@ -72,6 +72,13 @@ ul {
 
 h1 {
     font-size: 1.2rem;
+}
+
+#switch-temp {
+    width: min(360px, 80%);
+    justify-self: center;
+    color: var(--header-color);
+    align-self: flex-start;
 }
 
 #main-container {
