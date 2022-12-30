@@ -66,10 +66,14 @@ const DomGenerator = (function() {
     const displayCurrentWeather = function(weatherObject) {
         const container = document.createElement('div');
 
-        const header = document.createElement('h2');
-        header.className = 'current-city';
+        const header = document.createElement('h1');
+        header.className = 'current-header';
+        header.textContent = 'Current Weather';
+
+        const city = document.createElement('h2');
+        city.className = 'current-city';
         const cityName = weatherObject.name.replace(/\d+/g, '');
-        header.innerHTML = `<strong>${cityName}</strong>, ${weatherObject.sys.country}`;
+        city.innerHTML = `<strong>${cityName}</strong>, ${weatherObject.sys.country}`;
 
         const weather = document.createElement('ul');
         weather.className = 'current-weather';
@@ -108,7 +112,7 @@ const DomGenerator = (function() {
         
 
         _appendChildren(coordinates, lat, lon);
-        _appendChildren(container, header, coordinates, weather, temperature, tempDetail, clock);
+        _appendChildren(container, header, city, coordinates, weather, temperature, tempDetail, clock);
         
         return container;
     };
